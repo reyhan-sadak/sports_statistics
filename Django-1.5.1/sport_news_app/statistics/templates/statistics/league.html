@@ -1,0 +1,31 @@
+League name: {{ season.league.name }}
+<br>
+League country: {{ season.league.country }}
+<br>
+Season: {{ season.year }}
+<br>
+
+<table border="1">
+<tr>
+<td>Place</td>
+<td>Team</td>
+<td>Played</td>
+<td>Wins</td>
+<td>Draws</td>
+<td>Lost</td>
+<td>Goals</td>
+<td>Poinst</td>
+</tr>
+{% for teamInfo in teamsInfo %}
+<tr>
+<td>{{ forloop.counter }}</td>
+<td>{{ teamInfo.name }}</td>
+<td>{{ teamInfo.playedMatches }}</td>
+<td>{{ teamInfo.wins }}</td>
+<td>{{ teamInfo.draws }}</td>
+<td>{{ teamInfo.lost }}</td>
+<td>{{ teamInfo.goalsFor }}:{{ teamInfo.goalsAgainst }} ({{ teamInfo.goalDiff }})</td>
+<td>{{ teamInfo.points }}</td>
+</tr>
+{% endfor %}
+</table>

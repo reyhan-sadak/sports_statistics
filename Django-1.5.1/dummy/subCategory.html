@@ -1,0 +1,7 @@
+Sub category: {{sub_category_name}}
+<br>
+<ul>
+{% for id, newsTitle in news_to_show.items %}
+	<li><a href="/news/{{id}}">{{newsTitle}}</a></li>
+{% endfor %}
+</ul>
