@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Sportal.bg</title>
+<title>Spirtal.py</title>
 {% load staticfiles %}
 <link href={% static "main.css" %} rel="stylesheet" type="text/css" />
 </head>
@@ -14,7 +14,7 @@
 <div id="logo_panel">
 {% load staticfiles %}
 <a href="/">
-<img id="logo" src="{% static "logo.png" %}" alt="Image1"/>
+<img id="logo" src="{% static "spirtal_logo.png" %}" alt="Image1"/>
 </a>
 </div>
 
@@ -49,7 +49,7 @@
 </div>
 <div id="newsTextAndImage">
 <img id="newsImage" src="{{photo}}" alt="Image1"/>
-{{news_text}}
+{{news_text|safe}}
 </div>
 
 </div>

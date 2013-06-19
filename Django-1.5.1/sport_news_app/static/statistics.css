@@ -3,3 +3,116 @@
     float:right;
     width:80%;
 }
+
+#ranking
+{
+    width:81%;
+    float:right;
+    background-color:#FFCC66 ;
+    color:#FFCC66;
+}
+
+#rankingTable
+{
+    border: 2px solid black;
+    width:100%;
+}
+
+.teamInfoContainer
+{
+    float:right;
+    width:81%;
+    background-color:#C8C8C8;
+}
+
+.teamInfoContainer h1
+{
+    text-align:center;
+    color:#FFCC66;
+    background-color:#A8A8A8;
+}
+
+.teamInfoContainer h2
+{
+    text-align:center;
+    color:#600000;
+}
+
+#teamInfo
+{
+    width:100%;
+    height:300px;
+}
+
+#shortInfo
+{
+    float:left;
+    width:58%;
+    background-color:#B8C8D8;
+    height:100%;
+    margin:1%;
+}
+
+#staff
+{
+    float:right;
+    width:38%;
+    background-color:#B1C1D1;
+    height:100%;
+    margin:1%;
+}
+
+#teamLogoImage
+{
+    width:auto;
+    height:150px;
+}
+
+#rankingImage
+{
+    height:20px;
+    width:20px;;
+}
+
+#smallImageCell
+{
+    width:20px;
+    padding:0;
+    float:right;
+}
+
+#teamMatches
+{
+    width:100%;
+    height:300px;
+}
+
+#passedMatches
+{
+    float:left;
+    width:48%;
+    background-color:#B8C8D8;
+    height:100%;
+    margin:1%;
+}
+
+#upComingMatches
+{
+    float:right;
+    width:48%;
+    background-color:#B1C1D1;
+    height:100%;
+    margin:1%;
+}
+
+#passedMatchesTable
+{
+    width:100%;
+    font-size:12px;
+}
+
+#upCommingMatchesTable
+{
+    width:100%;
+    font-size:12px;
+}

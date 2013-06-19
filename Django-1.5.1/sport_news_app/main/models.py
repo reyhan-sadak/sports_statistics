@@ -3,11 +3,10 @@ from django.db import models
 # Create your models here.
 
 NEWS_PRIO = (
-    ('NEWS_MAIN1','Main news 1st'),
-    ('NEWS_MAIN2','Main news 2nd'),
-    ('NEWS_MAIN3','Main news 3th'),
-    ('NEWS_MAIN4','Main news 4th'),
-    ('NEWS_MAIN5','Main news 5th'),
+    ('NEWS_MAIN','Main news'),
+    ('NEWS_SECONDARY_1','Secondary news 1'),
+    ('NEWS_SECONDARY_2','Secondary news 2'),
+    ('NEWS_SECONDARY_3','Secondary news 3'),
     ('NEWS_NORMAL', 'Normal news'),
 )
 

@@ -31,7 +31,7 @@ class SportNewsCategoryAdmin(admin.ModelAdmin):
 class SportNewsAdmin(admin.ModelAdmin):
     search_fields = ['title', 'text', 'category',]
     
-    list_filter = ['category__mainCategory', 'category', 'created_at', 'updated_at', 'priority',]
+    list_filter = ['priority', 'category__mainCategory', 'category', 'created_at', 'updated_at',]
     
     ordering = ['priority', 'created_at', ]
     

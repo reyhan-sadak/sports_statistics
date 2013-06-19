@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Statistics Sportal.bg</title>
+<title>Statistics Spirtal.py</title>
 {% load staticfiles %}
 <link href={% static "main.css" %} rel="stylesheet" type="text/css" />
 <link href={% static "statistics.css" %} rel="stylesheet" type="text/css" />
@@ -15,7 +15,7 @@
 <div id="logo_panel">
 {% load staticfiles %}
 <a href="/">
-<img id="logo" src="{% static "logo.png" %}" alt="Image1"/>
+<img id="logo" src="{% static "spirtal_logo.png" %}" alt="Image1"/>
 </a>
 </div>
 
@@ -29,32 +29,13 @@
 
 <div class="sidebar">
 <ul>
-{% for main_category in side_bar.0 %}
-    <li><a href="/news/categories/{{main_category.id}}/">{{ main_category.name }}</a></li>
-    {% for id, sub_categories in side_bar.1.items %}
-        {% if id == main_category.id %}
+{% for country_id, country_info in side_bar.items %}
+    <li><a href="/statistics/countries/{{country_id}}/">{{ country_info.0 }}</a></li>
             <ul id="subCategoryList">
-            {% for sub_category in sub_categories %}
-                <li id="subCategoryList"><a href="/news/categories/{{main_category.id}}/{{sub_category.id}}">{{ sub_category.name }}</a></li>
+            {% for league_id, league in country_info.1.items %}
+                <li id="subCategoryList"><a href="/statistics/leagues/{{league_id}}">{{league}}</a></li>
             {% endfor %}
             </ul>
-         {% endif %}
-    {% endfor %}
-{% endfor %}
-</ul>
-</div>
-
-<div id="supportedCountries">
-Supported leagues:
-<br>
-<ul>
-{% for country_id, country_info in supported_countries.items %}
-	<li>{{country_info.0}}</a></li>
-	<ul>
-	{% for league_id, league in country_info.1.items %}
-		<li><a href="/statistics/leagues/{{league_id}}">{{league}}</a></li>
-	{% endfor %}
-	</ul>
 {% endfor %}
 </ul>
 </div>

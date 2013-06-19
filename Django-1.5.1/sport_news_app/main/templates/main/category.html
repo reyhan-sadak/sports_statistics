@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>{{category_name}} Sportal.bg</title>
+<title>{{category_name}} Spirtal.py</title>
 {% load staticfiles %}
 <link href={% static "main.css" %} rel="stylesheet" type="text/css" />
 </head>
@@ -14,7 +14,7 @@
 <div id="logo_panel">
 {% load staticfiles %}
 <a href="/">
-<img id="logo" src="{% static "logo.png" %}" alt="Image1"/>
+<img id="logo" src="{% static "spirtal_logo.png" %}" alt="Image1"/>
 </a>
 </div>
 
@@ -44,11 +44,14 @@
 </div>
 
 <div class="categoryNews">
-<ul>
-{% for id, newsTitle in news_to_show.items %}
-	<li><a href="/news/{{id}}">{{newsTitle}}</a></li>
+<table id="otherNewsTable">
+{% for news in news_to_show %}
+<tr>
+	<td id="otherNewsImageCell"><a href="/news/{{news.0}}"><img id="otherNewsImage" src="/media/{{news.1}}"/></a></td>
+	<td id="otherNewsTextCell"><a href="/news/{{news.0}}"><span id="otherNewsTitle">{{news.2}}</span></a></td>
+</tr>
 {% endfor %}
-</ul>
+</table>
 </div>
 
 </div>

@@ -1,0 +1,313 @@
+<style>
+
+body
+{
+    background-color:#C0C0C0;
+}
+
+a:link
+{
+    color:#000000;
+    text-decoration:none;
+}
+
+a:visited
+{
+    color:#000000;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color:#FF9933;
+    text-decoration:none;
+    
+}
+
+a:active
+{
+    color:#FF9933;
+    text-decoration:none;
+}
+
+.content
+{
+    width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#logo_panel
+{
+    background-color:#000000;
+    height:100px;
+}
+
+#logo
+{
+    display: block;
+    padding-top:32px;
+    padding-bottom:32px;
+    padding-left: 5px;
+}
+
+.navcontainer
+{
+    background-color:#000000;
+    height:auto;
+}
+
+.navcontainer ul
+{
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:left;
+}
+
+.navcontainer ul li
+{
+    display:inline;
+}
+
+.navcontainer ul li a
+{
+    display:inline-block;
+    padding:10px;
+}
+
+.navcontainer a:link
+{
+    color:#FF9900;
+    text-decoration:none;
+    background-color:#000000;
+}
+
+.navcontainer a:visited
+{
+    color:#FF9900;
+    text-decoration: none;
+    background-color:#000000;
+}
+
+.navcontainer a:hover
+{
+    background-color:#FF9900;
+    text-decoration:none;
+    color:#000000;
+    
+}
+
+.navcontainer a:active
+{
+    background-color:#FF9900;
+    text-decoration:none;
+    color:#000000;
+}
+
+.sidebar
+{
+    background-color:#606060;
+    height:auto;
+    width:18%;
+    padding:4px;
+    margin-top:3px;
+    float:left;
+}
+
+.sidebar ul
+{
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:left;
+}
+
+.sidebar ul li
+{
+    display:block;
+}
+
+.sidebar ul li a
+{
+    display:inline-block;
+    padding:10px;
+}
+
+.sidebar a:link
+{
+    color:#FF9900;
+    text-decoration:none;
+    background-color:#606060;
+}
+
+.sidebar a:visited
+{
+    color:#FF9900;
+    text-decoration: none;
+    background-color:#606060;
+}
+
+.sidebar a:hover
+{
+    background-color:#FF9900;
+    text-decoration:none;
+    color:#000000;
+    
+}
+
+.sidebar a:active
+{
+    background-color:#FF9900;
+    text-decoration:none;
+    color:#000000;
+}
+
+#subCategoryList
+{
+    background-color:#000000;
+    padding:3px;
+}
+
+.mainNews
+{
+    background-color:#FFF00;
+    height:auto;
+    width:80%;
+    padding:5px;
+    margin-top:10px;
+    float: right;
+}
+
+#firstNews
+{
+    height:500px;
+    width:auto;
+    background-color:#FFFFFF;
+    position:relative;
+}
+
+#firstNewsImage
+{
+    max-height:100%;
+    max-width:100%;
+    min-height:100%;
+    min-width:100%;
+    position:absolute;
+}
+
+#firstNewsText
+{
+    top:10px;
+    left:10px;
+    width:auto;
+    position:relative;
+    font-size:30;
+    font-weight:bold;
+    color:#FF9900;
+}
+
+#secondaryNews
+{
+    top:76%;
+    position:relative;
+    width:auto;
+    max-height:20%;
+    background-color:000000;
+}
+
+#secondaryNewsItem
+{
+    position:relative;
+    width:33%;
+    height:20%;
+    float:left;
+    padding:1px;
+}
+
+#secondaryNewsItemImage
+{
+    max-height:80%;
+    max-width:auto;
+    bottom:0px;
+    left:0px;
+}
+
+#secondaryNewsItemTitle
+{
+    width:55%;
+    height:80%;
+    float:right;
+    background-color:#000000;
+    color:#FF9900;
+    font-size:15;
+}
+
+.otherNews
+{
+    background-color:#606060;
+    height:auto;
+    width:80%;
+    padding:5px;
+    margin-top:10px;
+    float: right;
+}
+
+.categoryNews
+{
+    background-color:#606060;
+    height:auto;
+    width:80%;
+    padding:5px;
+    margin-top:10px;
+    float: right;
+}
+
+.subCategoryNews
+{
+    background-color:#606060;
+    height:auto;
+    width:80%;
+    padding:5px;
+    margin-top:10px;
+    float: right;
+}
+
+.newsContainer
+{
+    width:80%;
+    float: right;
+    background-color:#606060;
+}
+
+#newsTitle
+{
+    color:#FF9900;
+    padding:10px;
+    font-size:25;
+}
+
+#newsImage
+{
+    float:left;
+    vertical-align:middle;
+    margin:5px;
+}
+
+#newsTextAndImage
+{
+    width:auto;
+    float:right;
+    font-size:20;
+}
+
+#newsText
+{
+    float:right;
+}
+
+</style>

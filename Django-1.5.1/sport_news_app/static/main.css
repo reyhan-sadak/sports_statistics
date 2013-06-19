@@ -183,6 +183,35 @@ a:active
     float: right;
 }
 
+.mainNews a:link
+{
+    color:#FF9900;
+    text-decoration:none;
+    background-color:#606060;
+}
+
+.mainNews a:visited
+{
+    color:#FF9900;
+    text-decoration: none;
+    background-color:#606060;
+}
+
+.mainNews a:hover
+{
+    background-color:#FF9900;
+    text-decoration:none;
+    color:#000000;
+    
+}
+
+.mainNews a:active
+{
+    background-color:#FF9900;
+    text-decoration:none;
+    color:#000000;
+}
+
 #firstNews
 {
     height:500px;
@@ -213,7 +242,7 @@ a:active
 
 #secondaryNews
 {
-    top:76%;
+    top:73%;
     position:relative;
     width:auto;
     max-height:20%;
@@ -239,12 +268,17 @@ a:active
 
 #secondaryNewsItemTitle
 {
-    width:55%;
+    width:52%;
     height:80%;
     float:right;
     background-color:#000000;
     color:#FF9900;
     font-size:15;
+}
+
+#spaceBetweenMainNewsAndOthers
+{
+    height:525px;
 }
 
 .otherNews
@@ -255,6 +289,35 @@ a:active
     padding:5px;
     margin-top:10px;
     float: right;
+}
+
+#otherNewsTable
+{
+    border: 1px solid black;
+    padding:2px;
+}
+
+#otherNewsImage
+{
+    height:100px;
+}
+
+#otherNewsTitle
+{
+    font-size:25;
+}
+
+#otherNewsImageCell
+{
+    border-bottom:2px solid:#000000;
+    width:30%;
+}
+
+#otherNewsTextCell
+{
+    border-bottom:2px solid:#000000;
+    width:70%;
+    vertical-align:text-top;
 }
 
 .categoryNews

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+<html>
+
+<head>
+<title>Statistics Spirtal.py</title>
+{% load staticfiles %}
+<link href={% static "main.css" %} rel="stylesheet" type="text/css" />
+<link href={% static "statistics.css" %} rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="content">
+
+<div id="logo_panel">
+{% load staticfiles %}
+<a href="/">
+<img id="logo" src="{% static "spirtal_logo.png" %}" alt="Image1"/>
+</a>
+</div>
+
+<div class="navcontainer">
+<ul>
+{% for navItem in navigationBar %}
+<li><a href={{navItem.1}}>{{navItem.0}}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+<div class="sidebar">
+<ul>
+{% for country_id, country_info in side_bar.items %}
+    <li><a href="/statistics/countries/{{country_id}}/">{{ country_info.0 }}</a></li>
+            <ul id="subCategoryList">
+            {% for league_id, league in country_info.1.items %}
+                <li id="subCategoryList"><a href="/statistics/leagues/{{league_id}}">{{league}}</a></li>
+            {% endfor %}
+            </ul>
+{% endfor %}
+</ul>
+</div>
+
+<div class="teamInfoContainer">
+<h1> {{teamInfoToShow.name}} </h1>
+<div id="teamInfo">
+<h2> Team information</h2>
+<div id="shortInfo">
+<h3>Information about the team:</h3>
+<p>
+{{teamInfoToShow.info}}
+</p>
+</div>
+<div id="staff">
+<img id="teamLogoImage" src="/media/{{teamInfoToShow.team_logo}}" alt="Team logo"/>
+<p>League: {{teamInfoToShow.league.name}}</p>
+<p>Date founded: {{teamInfoToShow.date_founded}}</p>
+<p>Manager: <a href="/statistics/managers/{{teamInfoToShow.manager.id}}">{{teamInfoToShow.manager}}</a></p>
+<p>Stadium: <a href="/statistics/stadiums/{{teamInfoToShow.stadium.id}}">{{teamInfoToShow.stadium}}</a></p>
+</div>
+</div>
+
+<div id="teamMatches">
+<h2>Team matches</h2>
+<div id="passedMatches">
+<h3>Passed Matches:</h3>
+<table id="passedMatchesTable">
+<tr>
+<td>Match</td>
+<td>Week</td>
+<td>Time</td>
+<td>Result</td>
+</tr>
+{% for match in teamInfoToShow.passedMatches %}
+<td>{{match.homeTeam}} - {{match.awayTeam}}</td>
+<td>{{match.week}}</td>
+<td>{{match.time}}</td>
+<td>{{match.homeGoals}} - {{match.awayGoals}}</td>
+{% endfor %}
+</table>
+</div>
+
+<div id="upComingMatches">
+<h3>Up Comming Matches:</h3>
+<table id="upCommingMatchesTable">
+<tr>
+<td>Match</td>
+<td>Week</td>
+<td>Time</td>
+<td>Result</td>
+</tr>
+{% for match in teamInfoToShow.upComingMatches %}
+<tr>
+<td>{{match.homeTeam}} - {{match.awayTeam}}</td>
+<td>{{match.week}}</td>
+<td>{{match.time}}</td>
+<td>{{match.homeGoals}} - {{match.awayGoals}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
