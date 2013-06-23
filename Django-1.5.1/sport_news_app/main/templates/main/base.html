@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+{% block title %}
+<title>Spirtal.py</title>
+{% endblock %}
+{% load staticfiles %}
+{% block link %}
+<link href={% static "main.css" %} rel="stylesheet" type="text/css" />
+{% endblock %}
+</head>
+<body>
+<div class="content">
+
+<div id="logo_panel">
+{% load staticfiles %}
+<a href="/">
+<img id="logo" src="{% static "spirtal_logo.png" %}" alt="Image1"/>
+</a>
+</div>
+
+<div class="navcontainer">
+{% block navigation %}
+<ul>
+{% for navItem in navigationBar %}
+<li><a href={{navItem.1}} {% if navItem.2 %} target="_newtab"{% endif %}>{{navItem.0}}</a></li>
+{% endfor %}
+{% if request.user.is_staff %}
+<li><a href="/admin/" target="_newtab">Admin</a></li>
+{% endif %}
+<li class="rightBar">
+{% if user_info.first_name %}
+Welcome, {{user_info.first_name}}
+<!--<a href="/accounts/logout">Logout</a>-->
+<form action="/accounts/logout/" method="POST">{% csrf_token %}
+    <input type="hidden" name="fromPath" value={{ request.get_full_path }}/>
+    <input class="btn" type="submit" value="logout" />
+</form>
+{% else %}
+<form class="navbar-search" action="/accounts/login/" method="POST">{% csrf_token %}
+    <a href="/accounts/signup">Sign Up</a>
+    <input class="loginFields" type="text" name="username" value="" id="username" placeholder="login">
+    <input class="loginFields" type="password" name="password" value="" id="password" placeholder="password">
+    <input type="hidden" name="fromPath" value={{ request.get_full_path }}/>
+    <input class="btn" type="submit" value="login" />
+</form>
+{% endif %}
+</li>
+<li>
+<form class="searchbar" action="/news/searchNews/" method="GET">
+    <input type="text" name="search_text" id="search_text"
+    {% if search_word %}
+    value={{search_word}}
+    {% else %}
+    placeholder="Search"
+    {% endif %}
+    >
+    <input class="btn" class="btn" type="submit" value="search" />
+</form>
+</li>
+</ul>
+{% endblock %}
+</div>
+
+{% block sidebar %}
+<div class="sidebar">
+<ul>
+{% for main_category in side_bar.0 %}
+    <li><a href="/news/categories/{{main_category.id}}/">{{ main_category.name }}</a></li>
+    {% for id, sub_categories in side_bar.1.items %}
+        {% if id == main_category.id %}
+            <ul id="subCategoryList">
+            {% for sub_category in sub_categories %}
+                <li id="subCategoryList"><a href="/news/categories/{{main_category.id}}/{{sub_category.id}}">{{ sub_category.name }}</a></li>
+            {% endfor %}
+            </ul>
+         {% endif %}
+    {% endfor %}
+{% endfor %}
+</ul>
+</div>
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+</div>
+
+</body>
+
+</html>

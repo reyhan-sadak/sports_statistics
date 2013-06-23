@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -26,7 +27,7 @@ class SportNewsCategory(models.Model):
         unique_together = (('name', 'mainCategory'), ('mainCategory', 'order'))
     
     def __str__(self):
-        return self.name
+        return self.name + ' from ' + self.mainCategory.name
         
 
 class SportNews(models.Model):
@@ -46,3 +47,40 @@ class SportNews(models.Model):
     photo = models.FileField(upload_to='news', blank=True)
     def __str__(self):
         return self.title
+
+class SportNewsComment(models.Model):
+    # Created at
+    created_at = models.DateTimeField(auto_now_add = True)
+    # Updated at
+    updated_at = models.DateTimeField(auto_now = True)
+    # User
+    user = models.ForeignKey(User)
+    # Tite
+    title = models.CharField(max_length = 255)
+    # Comment text
+    text = models.TextField()
+    # Root comment
+    root_comment = models.ForeignKey("SportNewsComment", null=True, blank=True)
+    # The news for which the comment is
+    news = models.ForeignKey(SportNews)
+    # Comment number
+    comment_number = models.PositiveIntegerField()
+    
+    class Meta:
+        unique_together = (('news', 'comment_number'),)
+    
+    def __str__(self):
+        return self.title
+    
+    def save(self, *args, **kwargs):
+        comment_number = getNextCommentNumber(self.news)
+        if self.comment_number is None:
+            self.comment_number = comment_number
+        super(SportNewsComment, self).save(*args, **kwargs)
+
+def getNextCommentNumber(news):
+    current_comment_number = SportNewsComment.objects.filter(news=news).order_by('-comment_number').values_list('comment_number', flat=True)
+    if current_comment_number:
+        return current_comment_number[0] + 1
+    else:
+        return 1

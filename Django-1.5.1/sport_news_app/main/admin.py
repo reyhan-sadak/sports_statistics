@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models import SportNewsMainCategory, SportNewsCategory, SportNews
+from main.models import SportNewsMainCategory, SportNewsCategory, SportNews, SportNewsComment
 
 class SportNewsMainCategoryAdmin(admin.ModelAdmin):
     search_fields = ['name',]
@@ -38,9 +38,15 @@ class SportNewsAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at',)
     
     list_display = ('title', 'category', 'priority', 'created_at', 'updated_at',)
+
+class SportNewsCommentAdmin(admin.ModelAdmin):
+    search_fields = ['title', 'text', 'user__username', 'news__title', 'news__id',]
     
+    readonly_fields = ('created_at', 'updated_at', 'comment_number',)
     
+    list_display = ('title', 'news', 'user', 'created_at', 'updated_at',)
 
 admin.site.register(SportNewsMainCategory, SportNewsMainCategoryAdmin)
 admin.site.register(SportNewsCategory, SportNewsCategoryAdmin)
 admin.site.register(SportNews, SportNewsAdmin)
+admin.site.register(SportNewsComment, SportNewsCommentAdmin)

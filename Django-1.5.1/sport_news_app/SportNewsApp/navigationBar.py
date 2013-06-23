@@ -1,7 +1,7 @@
 NAVIGATION_BAR = [
-    ['Home', '/',],
-    ['Statistics', '/statistics/'],
-    ['Info', 'info'],
+    ['Home', '/', False,],
+    ['Statistics', '/statistics/', True,],
+    ['Info', '/info', False],
 ]
 
 def getNavigationBar():

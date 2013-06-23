@@ -70,6 +70,7 @@ a:active
 .navcontainer ul li
 {
     display:inline;
+    color:#B0B0B0;
 }
 
 .navcontainer ul li a
@@ -105,6 +106,28 @@ a:active
     background-color:#FF9900;
     text-decoration:none;
     color:#000000;
+}
+
+.searchbar input
+{
+    width:300px;
+    background-color:#E0E0E0;
+}
+
+.searchbar .btn
+{
+    width:60px;
+}
+
+.loginFields
+{
+    width:120px;
+    background-color:#FFCC99;
+}
+
+.rightBar
+{
+    float:right;
 }
 
 .sidebar
@@ -261,7 +284,7 @@ a:active
 #secondaryNewsItemImage
 {
     max-height:80%;
-    max-width:auto;
+    max-width:48%;
     bottom:0px;
     left:0px;
 }
@@ -320,17 +343,7 @@ a:active
     vertical-align:text-top;
 }
 
-.categoryNews
-{
-    background-color:#606060;
-    height:auto;
-    width:80%;
-    padding:5px;
-    margin-top:10px;
-    float: right;
-}
-
-.subCategoryNews
+.newsList
 {
     background-color:#606060;
     height:auto;
@@ -345,6 +358,62 @@ a:active
     width:80%;
     float: right;
     background-color:#606060;
+}
+
+.addCommetnContainer
+{
+    margin-top:20px;
+    width:80%;
+    float: right;
+    background-color:#606060;
+}
+
+.commentsContainer
+{
+    margin-top:20px;
+    width:80%;
+    float: right;
+    background-color:#CCCCCC;
+}
+
+.addCommentForm #comment
+{
+    margin:2%;
+    width:96%;
+    height:100px;
+}
+
+.addCommentForm  #commentTitle
+{
+    margin:2%;
+    width:96%;
+}
+
+.addCommentForm #button
+{
+
+}
+
+.commentsContainer .singleComment table
+{
+    width:96%;
+    margin:2%;
+    background-color:#505050;
+}
+
+.commentsContainer .singleComment table tr td
+{
+    color:@FFCC33;
+}
+
+#commentNumber
+{
+    width:50px;
+}
+
+#commentDate
+{
+    width:100px;
 }
 
 #newsTitle
@@ -371,6 +440,40 @@ a:active
 #newsText
 {
     float:right;
+}
+
+.signupContainer
+{
+    width:80%;
+    float:left;
+    margin-top:20px;
+    margin-left:10%;
+}
+
+.signupContainer .signup
+{
+
+}
+
+.signupContainer .signup #info{
+    float: left;
+    clear: right;
+    text-align:left;
+    width:30%;
+    height:30px;
+}
+
+.signupContainer .signup #input{
+    float:right;
+    width:70%;
+    height:30px;
+}
+
+.signupContainer .signup #error{
+    float:right;
+    width:70%;
+    height:25px;
+    color:#D00000;
 }
 
 </style>

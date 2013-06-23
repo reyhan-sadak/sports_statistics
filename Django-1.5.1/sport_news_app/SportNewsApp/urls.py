@@ -3,6 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from main import views
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -12,6 +13,8 @@ urlpatterns = patterns('',
     
     url(r'^$', include('main.urls')),
     url(r'^news/', include('main.urls')),
+    url(r'^accounts/', include('main.urls')),
+    url(r'^info/', views.info, name='info'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

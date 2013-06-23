@@ -1,45 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
-<html>
+{% extends "statistics/base.html" %}
 
-<head>
-<title>Statistics Spirtal.py</title>
-{% load staticfiles %}
-<link href={% static "main.css" %} rel="stylesheet" type="text/css" />
-<link href={% static "statistics.css" %} rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-
-<div class="content">
-
-<div id="logo_panel">
-{% load staticfiles %}
-<a href="/">
-<img id="logo" src="{% static "spirtal_logo.png" %}" alt="Image1"/>
-</a>
-</div>
-
-<div class="navcontainer">
-<ul>
-{% for navItem in navigationBar %}
-<li><a href={{navItem.1}}>{{navItem.0}}</a></li>
-{% endfor %}
-</ul>
-</div>
-
-<div class="sidebar">
-<ul>
-{% for country_id, country_info in side_bar.items %}
-    <li><a href="/statistics/countries/{{country_id}}/">{{ country_info.0 }}</a></li>
-            <ul id="subCategoryList">
-            {% for league_id, league in country_info.1.items %}
-                <li id="subCategoryList"><a href="/statistics/leagues/{{league_id}}">{{league}}</a></li>
-            {% endfor %}
-            </ul>
-{% endfor %}
-</ul>
-</div>
-
+{% block content %}
 <div class="teamInfoContainer">
 <h1> {{teamInfoToShow.name}} </h1>
 <div id="teamInfo">
@@ -102,9 +63,4 @@
 </div>
 
 </div>
-
-</div>
-
-</body>
-
-</html>
+{% endblock %}

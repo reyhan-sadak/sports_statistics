@@ -1,48 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
-<html>
+{% extends "main/base.html" %}
 
-<head>
-<title>Spirtal.py</title>
-{% load staticfiles %}
-<link href={% static "main.css" %} rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-
-<div class="content">
-
-<div id="logo_panel">
-{% load staticfiles %}
-<a href="/">
-<img id="logo" src="{% static "spirtal_logo.png" %}" alt="Image1"/>
-</a>
-</div>
-
-<div class="navcontainer">
-<ul>
-{% for navItem in navigationBar %}
-<li><a href={{navItem.1}}>{{navItem.0}}</a></li>
-{% endfor %}
-</ul>
-</div>
-
-<div class="sidebar">
-<ul>
-{% for main_category in side_bar.0 %}
-    <li><a href="/news/categories/{{main_category.id}}/">{{ main_category.name }}</a></li>
-    {% for id, sub_categories in side_bar.1.items %}
-        {% if id == main_category.id %}
-            <ul id="subCategoryList">
-            {% for sub_category in sub_categories %}
-                <li id="subCategoryList"><a href="/news/categories/{{main_category.id}}/{{sub_category.id}}">{{ sub_category.name }}</a></li>
-            {% endfor %}
-            </ul>
-         {% endif %}
-    {% endfor %}
-{% endfor %}
-</ul>
-</div>
-
+{% block content %}
 <div class="newsContainer">
 <div id="newsTitle">
 {{news_title}}
@@ -54,8 +12,71 @@
 
 </div>
 
+<div class="addCommetnContainer">
+{% if user_info %}
+Add your comment here:
+<form class="addCommentForm" action="/news/comment/" method="POST">{% csrf_token %}
+    <input id="commentTitle" type="text" name="commentTitle" value="" placeholder="Title"/>
+    <textarea id="comment" type="text" name="comment" value="" placeholder="Your comment"></textarea>
+    <input type="hidden" name="news_id" value={{news_id}}/>
+    <input type="hidden" name="fromPath" value={{ request.get_full_path }}/>
+    <input id="button" type="submit" value="Comment"/>
+</form>
+{% else %}
+If you want to comment the news, first log in from the menu above.
+{% endif %}
 </div>
 
-</body>
-
-</html>
+<div class="commentsContainer">
+Comments: {{ comments_to_show|length }}
+{% for comment_to_show in comments_to_show %}
+<div class="singleComment" id="comment_id_{{comment_to_show.id}}">
+<table>
+<tr>
+<td>
+{{ comment_to_show.user_first_name }} {{ comment_to_show.user_last_name }}
+</td>
+<td id="commentDate">
+{{ comment_to_show.created_at }}
+</td>
+<td id="commentNumber">
+No: {{ comment_to_show.comment_number }}
+<!---<a href="/comments/answer/">Answer</a>-->
+<form action="#comment_id_{{comment_to_show.id}}" method="POST"/>{% csrf_token %}
+    <input type="hidden" name="comment_to_answer_id" value={{comment_to_show.id}}/>
+    <input id="button" type="submit" value="Answer"/>
+</form>
+</td>
+</tr>
+{% if comment_to_show.root_comment %}
+<tr>
+<td>
+Answer to comment No: {{ comment_to_show.root_comment.comment_number }} from {{ comment_to_show.root_comment.user.first_name }} {{ comment_to_show.root_comment.user.last_name }}
+</td>
+</tr>
+{% endif %}
+<tr>
+<td>
+{{ comment_to_show.title }}
+</td>
+</tr>
+<tr>
+<td>
+{{ comment_to_show.text }}
+</td>
+</tr>
+</table>
+{% ifequal comment_to_answer_id comment_to_show.id %}
+<form class="addCommentForm" action="/news/comment/" method="POST">{% csrf_token %}
+    <input id="commentTitle" type="text" name="commentTitle" value="" placeholder="Title"/>
+    <textarea id="comment" type="text" name="comment" value="" placeholder="Your comment"></textarea>
+    <input type="hidden" name="news_id" value={{news_id}}/>
+    <input type="hidden" name="fromPath" value={{ request.get_full_path }}/>
+    <input type="hidden" name="answer_to_comment_id" value={{ comment_to_answer_id }}/>
+    <input id="button" type="submit" value="Comment"/>
+</form>
+{% endifequal %}
+{% endfor %}
+</div>
+</div>
+{% endblock %}

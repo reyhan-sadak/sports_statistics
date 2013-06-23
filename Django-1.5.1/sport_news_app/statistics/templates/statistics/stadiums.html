@@ -1,3 +1,6 @@
+{% extends "statistics/base.html" %}
+
+{% block content %}
 {% if stadiums_list %}
     <ul>
     {% for stadium in stadiums_list %}
@@ -7,3 +10,4 @@
 {% else %}
     <p>No stadiums are available.</p>
 {% endif %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "main/base.html" %}
+
+{% block sidebar %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="signupContainer">
+<form class="signup" action="./" method="POST">{% csrf_token %}
+    <label id="info" for="username_create">User name:</label>
+    <input id="input" type="text" name="username_create" value="" id="username_create"/>
+    <label id="error" for="username_create">{{ signUpErrors.username_create }}</label>
+    
+    <label id="info" for="password_create">Password:</label>
+    <input id="input" type="password" name="password_create" value="" id="password_create"/>
+    <label id="error" for="password_create">{{ signUpErrors.password_create }}</label>
+    
+    <label id="info" for="confirm_password">Confirm Password:</label>
+    <input id="input" type="password" name="confirm_password" value="" id="confirm_password"/>
+    <label id="error" for="confirm_password">{{ signUpErrors.confirm_password }}</label>
+    
+    <label id="info" for="first_name">First name:</label>
+    <input id="input" type="text" name="first_name" value="" id="first_name"/>
+    <label id="error" for="first_name">{{ signUpErrors.first_name }}</label>
+    
+    <label id="info" for="last_name">Last name:</label>
+    <input id="input" type="text" name="last_name" value="" id="last_name"/>
+    <label id="error" for="last_name">{{ signUpErrors.last_name }}</label>
+    
+    <label id="info" for="email">Email:</label>
+    <input id="input" type="text" name="email" value="" id="email"/>
+    <label id="error" for="email">{{ signUpErrors.email }}</label>
+
+    <label id="info" for="button"></label>
+    <input id="input" type="submit" value="Create Account" id="button"/>
+    <label id="error" for="button">{{ signUpErrors.button }}</label>
+</form>
+</div>
+
+{% endblock %}
+
+<form action="" method="post">{% csrf_token %}
+    <label for="username">User name:</label>
+    <input type="text" name="username" value="" id="username">
+    <label for="password">Password:</label>
+    <input type="password" name="password" value="" id="password">
+
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next|escape }}" />
+  </form>

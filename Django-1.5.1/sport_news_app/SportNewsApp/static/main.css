@@ -70,6 +70,7 @@ a:active
 .navcontainer ul li
 {
     display:inline;
+    color:#B0B0B0 ;
 }
 
 .navcontainer ul li a
@@ -306,6 +307,28 @@ a:active
 }
 
 #newsText
+{
+    float:right;
+}
+
+form.login {
+  border: 1px solid red;
+}
+
+form.login input {
+  height: 14px;
+  width: 140px;
+  background: #F5F5F5;
+  border-radius: 2px;
+}
+
+@media (min-width:768px) {
+  .navbar-search .btn {
+    margin:-9px 0 0 0;
+  }
+}
+
+.rightBar
 {
     float:right;
 }

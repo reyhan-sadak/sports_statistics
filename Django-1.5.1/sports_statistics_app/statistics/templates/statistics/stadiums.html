@@ -1,9 +1,0 @@
-{% if stadiums_list %}
-    <ul>
-    {% for stadium in stadiums_list %}
-        <li><a href="{% url 'stadium_info' stadium.id %}">{{ stadium.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No stadiums are available.</p>
-{% endif %}
