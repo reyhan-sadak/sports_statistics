@@ -22,7 +22,7 @@
 <div class="navcontainer">
 <ul>
 {% for navItem in navigationBar %}
-<li><a href={{navItem.1}} {% if not navItem.2 %}{% else %} target="_newtab"{% endif %}>{{navItem.0}}</a></li>
+<li><a href={{navItem.1}} {% if not navItem.2 %} target="_newtab"{% endif %}>{{navItem.0}}</a></li>
 {% endfor %}
 </ul>
 </div>

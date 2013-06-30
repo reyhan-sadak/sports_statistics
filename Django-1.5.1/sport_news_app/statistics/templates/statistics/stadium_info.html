@@ -1,5 +1,14 @@
 {% extends "statistics/base.html" %}
 
 {% block content %}
-{{ stadiumName}}
+<div class="statistics_info">
+<h2>{{ stadium.name}}</h2>
+<img id="stadiumImage" src="/media/{{stadium.picture}}" alt="stadium picture"/>
+<p>
+{{ stadium.location }}
+</p>
+<p>
+{{ stadium.info }}
+</p>
+</div>
 {% endblock %}

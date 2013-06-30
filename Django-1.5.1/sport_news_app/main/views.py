@@ -12,6 +12,7 @@ from test.test_iterlen import len
 import re
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 
 def getUseInfo(request):
     user_info = {}
@@ -126,6 +127,7 @@ def news(request, news_id):
                   context_instance=RequestContext(request))
 
 def login_view(request):
+    signUpErrors = {}
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -137,11 +139,13 @@ def login_view(request):
                 login(request, user)
                 return HttpResponseRedirect(fromPath)
             else:
-                return HttpResponse('Your user is not active')
+                signUpErrors['username'] = 'This user name is not active'
+                return render(request, 'main/login.html', {'signUpErrors': signUpErrors, 'user_info': getUseInfo(request), 'navigationBar': getNavigationBar(),'side_bar': getSideBar(),})
         else:
-            return HttpResponse('Your user name and password did not match!')
+            signUpErrors['username'] = 'The user name and password did not match'
+            return render(request, 'main/login.html', {'signUpErrors': signUpErrors, 'user_info': getUseInfo(request), 'navigationBar': getNavigationBar(),'side_bar': getSideBar(),})
     else:
-        return render(request, 'main/login.html')
+        return render(request, 'main/login.html', {'signUpErrors': signUpErrors, 'user_info': getUseInfo(request), 'navigationBar': getNavigationBar(),'side_bar': getSideBar(),})
 
 def logout_view(request):
     fromPath = '/'
@@ -287,4 +291,29 @@ def comment_news(request):
 
 def info(request):
     return render(request, 'main/info.html', {'user_info': getUseInfo(request), 'navigationBar': getNavigationBar(),'side_bar': getSideBar(),},
+                  context_instance=RequestContext(request))
+
+def forgot_password(request):
+    signUpErrors = {}
+    if request.method == 'POST':
+        if 'username' in request.POST and 'email' in request.POST:
+            userQuery = User.objects.filter(username=request.POST['username'])
+            if userQuery:
+                user = userQuery[0]
+                if user.email == request.POST['email']:
+                    email_subject = 'Forgotten password for spirtal.py'
+                    email_message = 'You requested from us to send you your password. Password:' # TODO
+                    email_from = 'admin@spirtal.py'
+                    mail_to = []
+                    mail_to.append(user.email)
+                    send_mail(email_subject, email_message, email_from, mail_to)
+                    return HttpResponseRedirect('/accounts/login/')
+                else:
+                    signUpErrors['email'] = 'Email missmatched'
+                    return render(request, 'main/forgotten_pass.html', {'signUpErrors': signUpErrors, 'user_info': getUseInfo(request), 'navigationBar': getNavigationBar(),'side_bar': getSideBar(),})
+            else:
+                signUpErrors['username'] = 'Wrong user name'
+                return render(request, 'main/forgotten_pass.html', {'signUpErrors': signUpErrors, 'user_info': getUseInfo(request), 'navigationBar': getNavigationBar(),'side_bar': getSideBar(),})
+    else:
+        return render(request, 'main/forgotten_pass.html', {'signUpErrors': signUpErrors, 'user_info': getUseInfo(request), 'navigationBar': getNavigationBar(),'side_bar': getSideBar(),},
                   context_instance=RequestContext(request))

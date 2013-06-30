@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.utils.timezone import now
 from SportNewsApp.navigationBar import getNavigationBar
 
-from statistics.models import Country, DomesticLeague, FootballStadium, FootballTeam, DomesticSeason, DomesticSeasonMatch
+from statistics.models import Country, DomesticLeague, FootballStadium, FootballTeam, DomesticSeason, DomesticSeasonMatch, FootballManager
 
 POINTS_FOR_WIN = 3
 POINTS_FOR_DRAW = 1
@@ -172,10 +172,14 @@ def stadium_info(request, stadium_id):
         stadium = FootballStadium.objects.get(pk=stadium_id)
     except FootballStadium.DoesNotExist:
         raise Http404
-    return render(request, 'statistics/stadium_info.html', {'stadiumName': stadium.name})
+    return render(request, 'statistics/stadium_info.html', {'navigationBar': getNavigationBar(), 'side_bar': getStatisticsSideBar(-1), 'stadium': stadium,})
 
 def manager_info(request, manager_id):
-    return HttpResponse("Manager info about manager with id = " + manager_id)
+    try:
+        manager = FootballManager.objects.get(pk=manager_id)
+    except FootballStadium.DoesNotExist:
+        raise Http404
+    return render(request, 'statistics/manager_info.html', {'navigationBar': getNavigationBar(), 'side_bar': getStatisticsSideBar(-1), 'manager': manager,})
 
 #def ranking(request):
 #    return HttpResponse("Ranking")

@@ -441,6 +441,73 @@ a:active
 {
     float:right;
 }
+.loginContainer
+{
+    width:70%;
+    float:left;
+    margin-top:20px;
+    margin-left:10%;
+}
+
+.loginContainer .signup
+{
+
+}
+
+.loginContainer .signup #info{
+    float: left;
+    clear: right;
+    text-align:left;
+    width:30%;
+    height:30px;
+}
+
+.loginContainer .signup #input{
+    float:right;
+    width:70%;
+    height:30px;
+}
+
+.loginContainer .signup #error{
+    float:right;
+    width:70%;
+    height:25px;
+    color:#D00000;
+}
+
+.forgottenPassContainer
+{
+    width:70%;
+    float:left;
+    margin-top:20px;
+    margin-left:10%;
+}
+
+.forgottenPassContainer .signup
+{
+
+}
+
+.forgottenPassContainer .signup #info{
+    float: left;
+    clear: right;
+    text-align:left;
+    width:30%;
+    height:30px;
+}
+
+.forgottenPassContainer .signup #input{
+    float:right;
+    width:70%;
+    height:30px;
+}
+
+.forgottenPassContainer .signup #error{
+    float:right;
+    width:70%;
+    height:25px;
+    color:#D00000;
+}
 
 .signupContainer
 {

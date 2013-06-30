@@ -1,0 +1,14 @@
+{% extends "statistics/base.html" %}
+
+{% block content %}
+<div class="statistics_info">
+<h2>{{ manager.name}}</h2>
+<img id="stadiumImage" src="/media/{{manager.picture}}" alt="manager picture"/>
+<p>
+Born on {{ manager.place_of_birth }} in {{ manager.birth_day }}
+</p>
+<p>
+{{ manager.info }}
+</p>
+</div>
+{% endblock %}

@@ -3,20 +3,20 @@
 {% block content %}
 
 <div>
-<div class="loginContainer">
+<div class="forgottenPassContainer">
 <form class="signup" action="./" method="POST">{% csrf_token %}
     <label id="info" for="username">User name:</label>
     <input id="input" type="text" name="username" value="" id="username"/>
     <label id="error" for="username">{{ signUpErrors.username }}</label>
     
-    <label id="info" for="password">Password:</label>
-    <input id="input" type="password" name="password" value="" id="password"/>
-    <label id="error" for="password">{{ signUpErrors.password }}</label>
+    <label id="info" for="email">Email:</label>
+    <input id="input" type="text" name="email" value="" id="email"/>
+    <label id="error" for="email">{{ signUpErrors.email }}</label>
 
     <input type="hidden" name="fromPath" value="//"/>
     
-    <label id="info" for="button"><a href="/accounts/forgotten/">Forgot password?</a></label>
-    <input id="input" type="submit" value="Login" id="button"/>
+    <label id="info" for="button"></label>
+    <input id="input" type="submit" value="Send" id="button"/>
     <label id="error" for="button">{{ signUpErrors.button }}</label>
 </form>
 </div>
